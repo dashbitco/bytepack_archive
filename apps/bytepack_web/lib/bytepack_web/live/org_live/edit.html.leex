@@ -1,0 +1,47 @@
+<div class="page-title-box">
+  <h4 class="page-title"><%= @page_title %></h4>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <%= live_component @socket, BytepackWeb.OrgLive.FormComponent,
+      id: :org_form,
+      current_user: @current_user,
+      org: @current_org,
+      action: :edit,
+      return_to: Routes.org_dashboard_index_path(@socket, :index, @current_org) %>
+  </div>
+</div>
+
+<%= if @seller do %>
+  <div class="page-title-box">
+    <h4 class="page-title">Seller settings</h4>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <%= live_component @socket, BytepackWeb.SellerLive.FormComponent,
+        id: :seller_form,
+        current_user: @current_user,
+        audit_context: @audit_context,
+        seller: @seller,
+        action: :edit,
+        return_to: Routes.org_dashboard_index_path(@socket, :index, @current_org) %>
+    </div>
+  </div>
+
+  <div class="page-title-box" id="webhooks">
+    <h4 class="page-title">Webhooks</h4>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <%= live_component @socket, BytepackWeb.SellerLive.WebhookInstructionsComponent,
+        id: :webhook_instructions,
+        current_user: @current_user,
+        current_membership: @current_membership,
+        seller: @seller
+      %>
+    </div>
+  <div>
+<% end %>

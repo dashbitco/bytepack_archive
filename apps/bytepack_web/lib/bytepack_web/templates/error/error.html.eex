@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= @title %> · Bytepack</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= Routes.static_path(@conn, "/images/fav/apple-icon-180x180.png") %>">
+    <link rel="icon" type="image/png" sizes="192x192"  href="<%= Routes.static_path(@conn, "/images/fav/android-icon-192x192.png") %>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= Routes.static_path(@conn, "/images/fav/favicon-32x32.png") %>">
+    <link rel="icon" type="image/png" sizes="96x96" href="<%= Routes.static_path(@conn, "/images/fav/favicon-96x96.png") %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= Routes.static_path(@conn, "/images/fav/favicon-16x16.png") %>">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="<%= Routes.static_path(@conn, "/images/fav/ms-icon-144x144.png") %>">
+    <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>" />
+  </head>
+  <body>
+    <main role="main" class="simple-page">
+      <div class="row no-gutters justify-content-center">
+        <div class="col-md-6 col-xl-4">
+          <div class="card simple-page-card">
+            <div class="card-header simple-page-header text-center p-4">
+              <a href="/"><img src="<%= Routes.static_path(@conn, "/images/bytepack_logo_white.png") %>" alt="Bytepack" height="40" /></a>
+            </div>
+            <div class="card-body text-center p-4">
+              <h1 class="mb-4"><%= @title %></h1>
+              <p class="text-secondary"><%=@description %></p>
+              <a href="/" class="btn btn-primary mt-3 mb-2"><i class="feather-icon icon-chevron-left pr-1"></i> Return to Bytepack</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <%= render BytepackWeb.LayoutView, "_footer.html", conn: @conn %>
+  </body>
+</html>

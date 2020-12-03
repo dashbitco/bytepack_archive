@@ -1,0 +1,173 @@
+<div class="topnav-navbar topnav-navbar-dark" id="topnav" phx-update="ignore">
+   <div class="container-fluid">
+    <a class="navbar-toggle collapsed" data-toggle="collapse" data-target="#orgnav" aria-expanded="false" aria-controls="orgnav" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="lines">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </a>
+
+    <%= live_redirect to: Routes.dashboard_index_path(@socket, :index), class: "topnav-logo" do %>
+      <img src="<%= Routes.static_path(@socket, "/images/bytepack_logo_white.png") %>" alt="Bytepack" height="40" />
+    <% end %>
+
+    <ul class="list-unstyled topbar-right-menu float-right mb-0">
+      <li class="dropdown">
+        <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <span class="account-icon">
+            <i class="feather-icon icon-user"></i>
+          </span>
+          <span>
+            <span class="account-main text-truncate">
+              Welcome,
+            </span>
+            <span class="account-sub"><%= @current_user.email %></span>
+          </span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
+          <div class="dropdown-header d-md-none">
+            <%= @current_user.email %>
+          </div>
+
+          <div class="dropdown-divider d-md-none"></div>
+
+          <%= if @current_user.is_staff do %>
+            <%= live_redirect to: Routes.admin_seller_index_path(@socket, :index), class: "dropdown-item text-info" do %>
+              <i class="feather-icon icon-alert-triangle mr-1"></i>
+              Admin
+            <% end %>
+          <% end %>
+
+          <%= live_redirect to: Routes.dashboard_index_path(@socket, :index), class: "dropdown-item" do %>
+            <i class="feather-icon icon-user mr-1"></i>
+            My Dashboard
+          <% end %>
+
+          <%= live_redirect to: Routes.user_settings_path(@socket, :index), class: "dropdown-item" do %>
+            <i class="feather-icon icon-settings mr-1"></i>
+            Settings
+          <% end %>
+
+          <%= link to: Routes.user_session_path(@socket, :delete), method: :delete, class: "dropdown-item" do %>
+            <i class="feather-icon icon-log-out mr-1"></i>
+            Logout
+          <% end %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="shadow-sm">
+  <div class="container-fluid active">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="collapse navbar-collapse" id="orgnav" phx-update="ignore">
+        <ul class="navbar-nav">
+          <%= if @current_org do %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle arrow-none" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <i class="feather-icon icon-home mr-1"></i>
+                <strong><%= @current_org.name %></strong>
+                <div class="arrow-down"></div>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="topnav-orgs">
+                <%= if @orgs != [] do %>
+                  <div class="dropdown-header">
+                    <small class="font-weight-bold">Choose Organization</small>
+                  </div>
+
+                  <%= for org <- @orgs do %>
+                    <%= live_redirect org.name, to: Routes.org_dashboard_index_path(@socket, :index, org), class: "dropdown-item text-truncate" %>
+                  <% end %>
+
+                  <div class="dropdown-divider"></div>
+                <% end %>
+
+                <%= live_redirect to: Routes.org_new_path(@socket, :new), class: "dropdown-item" do %>
+                  <i class="feather-icon icon-plus mr-1"></i>
+                  New Organization
+                <% end %>
+              </div>
+            </li>
+
+            <%= nav_item(%{
+              title: "Purchases",
+              icon: "feather-icon icon-shopping-bag",
+              url: Routes.purchase_index_path(@socket, :index, @current_org),
+              acl: @acl,
+              current_membership: @current_membership,
+              show_if_acl: [:purchase, :read],
+              active_if_acl: [:purchase]}) %>
+
+            <%= nav_item(%{
+              title: "Sales",
+              icon: "feather-icon icon-trending-up",
+              url: Routes.sale_index_path(@socket, :index, @current_org),
+              acl: @acl,
+              current_membership: @current_membership,
+              show_if_acl: [:sale, :read],
+              active_if_acl: [:sale]}) %>
+
+            <%= nav_item(%{
+              title: "Products",
+              icon: "feather-icon icon-grid",
+              url: Routes.product_index_path(@socket, :index, @current_org),
+              acl: @acl,
+              current_membership: @current_membership,
+              show_if_acl: [:product, :read],
+              active_if_acl: [:product]}) %>
+
+            <%= nav_item(%{
+              title: "Packages",
+              icon: "feather-icon icon-package",
+              url: Routes.package_index_path(@socket, :index, @current_org),
+              acl: @acl,
+              current_membership: @current_membership,
+              show_if_acl: [:package, :read],
+              active_if_acl: [:package]}) %>
+
+            <%= nav_item(%{
+              title: "Team",
+              icon: "feather-icon icon-users",
+              url: Routes.team_index_path(@socket, :index, @current_org),
+              acl: @acl,
+              current_membership: @current_membership,
+              show_if_acl: [:team, :read],
+              active_if_acl: [:team]}) %>
+
+            <%= nav_item(%{
+              title: "Settings",
+              icon: "feather-icon icon-settings",
+              url: Routes.org_edit_path(@socket, :edit, @current_org),
+              acl: @acl,
+              current_membership: @current_membership,
+              show_if_acl: [:org, :edit],
+              active_if_acl: [:org, :edit]}) %>
+          <% else %>
+            <%= if @orgs != [] do %>
+              <li class="nav-item">
+                <a class="nav-link cursor-default">Choose Organization:</a>
+              </li>
+
+              <%= for org <- @orgs do %>
+                <li class="nav-item">
+                  <%= live_redirect to: Routes.purchase_index_path(@socket, :index, org), class: "nav-link" do %>
+                    <i class="feather-icon icon-home mr-1"></i><%= org.name %>
+                  <% end %>
+                </li>
+              <% end %>
+            <% end %>
+
+            <li class="nav-item">
+              <%= live_redirect to: Routes.org_new_path(@socket, :new), class: "nav-link" do %>
+                <i class="feather-icon icon-plus"></i>
+                New Organization
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>

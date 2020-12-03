@@ -1,0 +1,46 @@
+<section class="py-5">
+  <div class="container">
+    <%= if @live_action == :message_sent do %>
+      <div class="row py-3 contact-message-sent">
+        <div class="col-lg-12">
+          <div class="text-center">
+            <h1 class="mt-4 mb-2"><i class="contact-message-sent__icon text-muted feather-icon icon-send"></i></h1>
+            <h3>Message sent</h3>
+            <p class="header-subtitle mt-2 mb-4">Thank you for reaching out!</p>
+            <p class="pt-4">
+              <%= link to: Routes.page_path(@socket, :index), class: "btn btn-primary" do %>
+                <i class="feather-icon icon-chevron-left mr-1"></i> Go back to the home page
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="row py-3">
+        <div class="col-lg-12">
+          <div class="text-center">
+            <h1 class="mt-0"><i class="text-muted feather-icon icon-mail"></i></h1>
+            <h3>Contact us</h3>
+            <p class="header-subtitle mt-2">How can we help?</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-lg-8 offset-lg-2 my-2 mb-3">
+          <%= category_button(@socket, assigns, BytepackWeb.ContactFormLive.SellFormComponent, :sell) %>
+          <%= if assigns[:current_user] do %>
+            <%= category_button(@socket, assigns, BytepackWeb.ContactFormLive.ReportIssueFormComponent, :report_issue) %>
+          <% end %>
+          <%= category_button(@socket, assigns, BytepackWeb.ContactFormLive.GeneralFormComponent, :other) %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-lg-8 offset-lg-2 mb-3 text-center text-muted font-16">
+          Want to send us an email? Contact us at <a href="mailto:contact@bytepack.io">contact@bytepack.io</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

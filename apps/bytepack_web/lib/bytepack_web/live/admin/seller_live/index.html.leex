@@ -1,0 +1,40 @@
+<%= if @live_action == :edit do %>
+  <%= live_modal @socket,
+    BytepackWeb.Admin.SellerLive.FormComponent,
+    id: :seller_form,
+    seller: @seller,
+    org: @org,
+    audit_context: @audit_context,
+    return_to: Routes.admin_seller_index_path(@socket, :index) %>
+<% end %>
+
+<div class="page-title-box">
+  <h4 class="page-title"><%= @page_title %></h4>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <table id="members" class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>Date of creation</th>
+          <th>Organization</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= for org <- @orgs do %>
+        <tr>
+          <td><%= Date.to_string(org.inserted_at) %></td>
+          <td><%= org.name %></td>
+          <td>
+            <%= live_redirect to: Routes.admin_seller_index_path(@socket, :edit, org), id: "activate-button-#{org.id}", class: "btn btn-sm btn-primary" do %>
+              <i class="feather-icon icon-bag-plus mr-1"></i><%= if org.is_seller do %>Edit<% else %>Activate<% end %> seller
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

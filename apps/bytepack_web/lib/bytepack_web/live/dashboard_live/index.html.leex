@@ -1,0 +1,155 @@
+<div class="page-title-box">
+  <h4 class="page-title dashboard__title">Your Dashboard</h4>
+</div>
+
+<div class="dashboard__notifications">
+  <%= if @current_user.confirmed_at do %>
+    <%= for invitation <- @invitations do %>
+      <div class="alert alert-info text-center" id="invitation-<%= invitation.id %>" role="alert">
+        <h4>You have been invited to join <%= invitation.org.name %></h4>
+
+        <div class="py-1">
+          <%= button class: "btn-info btn-sm",
+            phx_click: "accept_invitation",
+            phx_value_id: invitation.id do %>Accept<% end %>
+
+          <%= button class: "btn-outline-link btn-sm text-info",
+            phx_click: "reject_invitation",
+            phx_value_id: invitation.id do %>Reject<% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= if has_any_notification?(@orgs, @invitations, @pending_purchases) do %>
+      <div class="mt-3">
+        <%= live_component @socket, BytepackWeb.InfoBannerComponent,
+        title: "You don't belong to any organizations.",
+        description: "Create your first organization to gain access to all features that Bytepack has to offer.",
+        icon: "home" do %>
+          <%= live_redirect to: Routes.org_new_path(@socket, :new), id: "new-organization-button", class: "btn btn-sm info-banner__button" do %>
+            <span class="feather-icon icon-plus mr-1"></span>Create new organization
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= if has_invitations?(@invitations) do %>
+      <div class="alert alert-info text-center" role="alert">
+        <h4 class="alert-heading">
+          You have been invited to join
+          <div class="comma-separated-list">
+          <%= for invitation <- @invitations do %><span><%= invitation.org.name %></span><% end %>
+          </div>
+        </h4>
+
+        <p class="mb-1">In order to accept invitations you need to confirm your account first.</p>
+
+        <p class="mb-2">
+          If you don't receive an e-mail shortly, you can <a href="#" phx-click="confirmation_resend">resend the confirmation</a> instructions.
+        </p>
+
+      </div>
+    <% else %>
+      <%= if !has_pending_purchases?(@pending_purchases) do %>
+        <div class="alert alert-info text-center" role="alert">
+          <h4 class="alert-heading">You have not confirmed your account</h4>
+
+          <p class="mb-1">To access all Bytepack features you need to confirm your account first.</p>
+
+          <p class="mb-2">
+            If you don't receive an e-mail shortly, you can <a href="#" phx-click="confirmation_resend">resend the confirmation</a> instructions.
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= for pending_purchase <- @pending_purchases do %>
+    <div class="alert alert-info text-center" id="pending_purchase-<%= pending_purchase.id %>" role="alert">
+      <h4>We noticed that you have purchased <%= pending_purchase.product.name %></h4>
+
+      <p class="mb-1">
+        You can <%= live_redirect to: Routes.onboarding_purchase_index_path(@socket, :index, pending_purchase.id, Purchases.purchase_token(pending_purchase)) do %>
+          claim this purchase here
+        <% end %>.
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<%= if @orgs != [] do %>
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body dashboard__purchases">
+          <h4>Purchases</h4>
+          <%= if @org_purchases == [] do %>
+            <p class="mb-1">Here we will show all of your purchases once you buy anything delivered by Bytepack.</p>
+          <% else %>
+            <p>Products that you have purchased through Bytepack.</p>
+          <% end %>
+          <%= if @org_purchases != [] do %>
+            <div class="d-flex flex-wrap product-box-component__wrapper">
+              <%= for purchase <- @org_purchases do %>
+                <%=
+                  product_box(
+                    "Show details",
+                    purchase.product.name,
+                    find_org(@orgs, purchase.buyer_id),
+                    Routes.purchase_show_path(
+                      @socket,
+                      :show,
+                      find_org(@orgs, purchase.buyer_id),
+                      purchase
+                    )
+                  )
+                %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <%= if @seller_status != :no do %>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body dashboard__products">
+            <h4>Products</h4>
+            <%= if @org_products == [] do %>
+              <p class="mb-1">
+                <%= if @seller_status == :yes do %>
+                  Here we will show all of your products once you create them in any organization.
+                <% else %>
+                  Are you interested in delivering products through Bytepack?
+                  <%= link "Reach out!", to: Routes.contact_form_index_path(@socket, :sell) %>
+                <% end %>
+              </p>
+            <% else %>
+              <p>Products that you are selling through Bytepack.</p>
+            <% end %>
+            <%= if @org_products != [] do %>
+              <div class="d-flex flex-wrap product-box-component__wrapper">
+                <%= for product <- @org_products do %>
+                  <%=
+                    product_box(
+                      "Edit product",
+                      product.name,
+                      find_org(@orgs, product.seller_id),
+                      Routes.product_edit_path(
+                        @socket,
+                        :edit,
+                        find_org(@orgs, product.seller_id),
+                        product
+                      )
+                    )
+                  %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

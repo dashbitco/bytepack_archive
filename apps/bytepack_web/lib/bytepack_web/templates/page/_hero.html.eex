@@ -1,0 +1,29 @@
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 col-xl-5">
+        <div class="mt-md-4 hero-section__wrapper">
+          <h2 class="text-white font-weight-normal hero-title hero-section__title">
+            <div>Bytepack helps you package and</div>
+            <div>deliver software products to</div>
+            <div>developers and enterprises.</div>
+          </h2>
+
+          <%= link(raw("Access my packages <i class='feather-icon icon-chevron-right'></i>"),
+            to: Routes.user_session_path(@conn, :new),
+            class: "btn btn-primary") %>
+
+          <p class="mt-3 font-16 text-white-50">
+            Interested in delivering through Bytepack?
+            <%= link "Click here", to: Routes.contact_form_index_path(@conn, :sell) %>.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-xl-5 offset-lg-2 d-none d-lg-block">
+        <div class="text-md-right mt-3 mt-md-0">
+          <%= render "_hero_image.html", conn: @conn %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

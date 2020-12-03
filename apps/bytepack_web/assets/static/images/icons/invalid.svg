@@ -1,0 +1,7 @@
+<svg xmlns='http://www.w3.org/2000/svg' fill='#fa5c7c' viewBox='-2 -2 7 7'>
+  <path stroke='#fa5c7c' d='M0 0l3 3m0-3L0 3'/>
+  <circle r='.5' />
+  <circle cx='3' r='.5'/>
+  <circle cy='3' r='.5'/>
+  <circle cx='3' cy='3' r='.5' />
+</svg>

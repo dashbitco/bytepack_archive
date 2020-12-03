@@ -1,0 +1,36 @@
+.sales-table {
+  margin-bottom: 0;
+
+  td {
+    vertical-align: middle;
+  }
+}
+
+.sales-table__product-name {
+  font-weight: bold;
+  min-width: 120px;
+}
+
+.sales-table__wrapper {
+  overflow-x: auto;
+}
+
+.sales-table__header {
+  white-space: nowrap;
+}
+
+.sales-table__buttons {
+  white-space: nowrap;
+}
+
+@include media-breakpoint-down(md) {
+  .sales-table__buttons {
+    white-space: normal;
+
+    .btn {
+      margin-bottom: 5px;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+}

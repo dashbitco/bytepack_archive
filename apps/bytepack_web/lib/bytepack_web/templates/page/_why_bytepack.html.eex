@@ -1,0 +1,35 @@
+<section class="py-5 bg-light-lighten border-top border-light">
+  <div class="container why-bytepack" id="why-bytepack">
+
+    <div class="row py-3">
+      <div class="col-lg-12">
+        <div class="text-center">
+          <img class="why-bytepack__icon" src="<%= Routes.static_path(@conn, "/images/bytepack_letter_icon_black.svg") %>" />
+          <h3>How is Bytepack different?</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row why-bytepack__description-row">
+      <div class="col-lg-4 offset-md-1">
+        <%= render "_why_bytepack_image.html", conn: @conn %>
+      </div>
+
+      <div class="col-lg-6 col-sm-12 my-3">
+        <div class="px-2">
+          <p class="why-bytepack__paragraph">While there are many package hosting platforms out there,
+          all of them focus on hosting packages within a single
+          organization.</p>
+
+          <p class="why-bytepack__paragraph">Bytepack goes beyond package hosting. Bytepack is the
+          first platform for <strong>delivering software products to third
+          parties</strong>, such as developers and enterprises.</p>
+
+          <p class="why-bytepack__paragraph">Our goal is to enable developers who want to sell, distribute,
+          and update software while providing <strong>excellent onboarding
+          experience and control to customers</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

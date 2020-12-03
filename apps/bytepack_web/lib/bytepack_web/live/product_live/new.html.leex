@@ -1,0 +1,19 @@
+<div class="page-title-box">
+  <h4 class="page-title"><%= @page_title %></h4>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <%= live_component @socket, BytepackWeb.ProductLive.FormComponent,
+      id: :new_product,
+      audit_context: @audit_context,
+      current_user: @current_user,
+      current_org: @current_org,
+      product: @product,
+      packages: @packages,
+      title: @page_title,
+      action: :new,
+      return_to: Routes.product_index_path(@socket, :index, @current_org) %>
+    </div>
+  </div>
+</div>

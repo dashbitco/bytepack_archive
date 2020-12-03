@@ -1,0 +1,99 @@
+<%= if @live_action == :invite do %>
+  <%= live_modal @socket, BytepackWeb.TeamLive.InviteFormComponent,
+    id: :new,
+    title: @page_title,
+    audit_context: @audit_context,
+    current_org: @current_org,
+    return_to: Routes.team_index_path(@socket, :index, @current_org) %>
+<% end %>
+
+<%= if @live_action == :edit_membership do %>
+  <%= live_modal @socket, BytepackWeb.TeamLive.MembershipFormComponent,
+    id: :edit,
+    title: @page_title,
+    audit_context: @audit_context,
+    membership: @membership,
+    current_org: @current_org,
+    current_membership: @current_membership,
+    return_to: Routes.team_index_path(@socket, :index, @current_org) %>
+<% end %>
+
+<div class="card mt-3">
+  <div class="card-body">
+    <div class="row mb-3">
+      <div class="col-7">
+        <h4>Members</h4>
+      </div>
+      <div class="col-5 text-right">
+        <%= live_redirect to: Routes.team_index_path(@socket, :invite, @current_org), id: "invite-button", class: "btn btn-sm btn-primary" do %>
+          <i class="feather-icon icon-plus mr-1"></i>Invite new member
+        <% end %>
+      </div>
+    </div>
+
+    <table id="members" class="table mb-0">
+      <thead class="thead-light">
+        <tr>
+          <th>E-mail</th>
+          <th>Role</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <%= for membership <- @memberships do %>
+        <tr id="member-<%= membership.member.id %>">
+          <td class="align-middle<%= if membership.member.id == @current_user.id do %> font-weight-bold<% end %>">
+            <%= membership.member.email %>
+          </td>
+          <td class="align-middle"><%= membership.role %></td>
+          <td class="text-right">
+            <%= delete_member_button(membership.member, @members_count, @current_user, @current_org) %>
+
+            <%= live_redirect to: Routes.team_index_path(@socket, :edit_membership, @current_org, membership), class: "btn btn-sm btn-primary" do %>
+              <i class="feather-icon icon-edit mr-1"></i>Edit
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="row mb-3">
+      <div class="col-9">
+        <h4>Invitations</h4>
+      </div>
+    </div>
+
+    <%= if @invitations != [] do %>
+      <table id="invitations" class="table mb-0">
+        <thead class="thead-light">
+          <tr>
+            <th>E-mail</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <%= for invitation <- @invitations do %>
+          <tr id="invitation-<%= invitation.id %>">
+            <td class="align-middle">
+              <%= invitation.email %>
+            </td>
+            <td class="text-right">
+              <%= button data: [confirm: "Are you sure you want to remove the invitation for #{invitation.email}?"],
+                class: "btn-outline-secondary btn-sm",
+                phx_click: "delete_invitation",
+                phx_value_id: invitation.id do %><i class="feather-icon icon-trash"></i> Delete<% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>No pending invitations.</p>
+    <% end %>
+  </div>
+</div>

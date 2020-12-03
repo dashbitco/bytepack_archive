@@ -1,0 +1,72 @@
+<div class="page-title-box">
+  <div class="row">
+    <div class="col-9">
+      <h4 class="page-title"><%= @page_title %></h4>
+    </div>
+  </div>
+</div>
+
+<%= if @purchase.revoked_at do %>
+  <div class="alert alert-warning mb-3 mt-0" role="alert">
+    <h4 class="alert-heading">This purchase has expired</h4>
+    <p class="mb-0">If you think this information is not correct, you can contact the seller via the buttons below.</p>
+  </div>
+<% end %>
+
+<div class="card">
+  <div class="card-body">
+    <div class="d-md-flex">
+      <div class="flex-grow-1">
+        <div class="product-packages__description">
+          <%= text_to_html(@purchase.product.description) %>
+        </div>
+      </div>
+      <div class="flex-grow-0 flex-shrink-0">
+        <div class="mb-2">Published by FooBar</div>
+        <div>
+          <%= link to: "mailto:" <> @purchase.product.seller.email, class: "btn btn-light" do %>
+            <span class="feather-icon icon-mail mr-1"></span> Contact by email
+          <% end %>
+
+          <%= link to: @purchase.product.url, target: "_blank", rel: "noopener", class: "btn btn-light" do %>
+            <span class="feather-icon icon-external-link mr-1"></span> Visit website
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" id="purchase-package-list">
+  <%= if @package_count > 1 do %>
+    <div class="col-md-4 col-xl-3">
+      <div class="card product-package">
+        <div class="card-body">
+          <h4 class="card-title">Available packages</h4>
+          <%= for package <- @purchase.product.packages do %>
+            <%= package_button(assigns, package) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <%= if @package_count > 1 do %>
+    <div class="col-md-8 col-xl-9">
+  <% else %>
+    <div class="col">
+    <h4 class="page-title mb-4 mt-3">Package details</h4>
+  <% end %>
+    <div id="package<%= @selected_package.id %>">
+      <%= live_component(@socket, BytepackWeb.PackageLive.ShowComponent,
+        id: {:package, @selected_package.id},
+        current_membership: @current_membership,
+        current_org: @current_org,
+        package: @selected_package,
+        selected_release: @selected_release,
+        type: {:purchase, @purchase},
+        purchase_revoked?: !!@purchase.revoked_at)
+      %>
+    </div>
+  </div>
+</div>

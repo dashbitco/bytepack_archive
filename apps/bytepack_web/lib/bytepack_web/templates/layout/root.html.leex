@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= if title = assigns[:page_title] do %>
+      <%= live_title_tag title, suffix: " · Bytepack" %>
+    <% else %>
+      <title>Bytepack</title>
+    <% end %>
+    <meta name="description" content="Bytepack helps you package and deliver software products to developers and enterprises.">
+    <%= csrf_meta_tag() %>
+    <%= request_id_tag() %>
+    <%= user_id_tag(@conn) %>
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= Routes.static_path(@conn, "/images/fav/apple-icon-180x180.png") %>">
+    <link rel="icon" type="image/png" sizes="192x192"  href="<%= Routes.static_path(@conn, "/images/fav/android-icon-192x192.png") %>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= Routes.static_path(@conn, "/images/fav/favicon-32x32.png") %>">
+    <link rel="icon" type="image/png" sizes="96x96" href="<%= Routes.static_path(@conn, "/images/fav/favicon-96x96.png") %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= Routes.static_path(@conn, "/images/fav/favicon-16x16.png") %>">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="<%= Routes.static_path(@conn, "/images/fav/ms-icon-144x144.png") %>">
+    <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>" />
+    <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>" nonce="<%= csp_nonce(@conn) %>"></script>
+  </head>
+  <body>
+    <%= @inner_content %>
+  </body>
+</html>

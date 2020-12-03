@@ -1,0 +1,20 @@
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="footer-links">
+          <%= link "Home", to: Routes.page_path(@conn, :index) %>
+          <%= link "Contact", to: Routes.contact_form_index_path(@conn, :index) %>
+        </div>
+      </div>
+      <div class="col-lg-5 text-lg-right">
+        <span>© Dashbit, 2020. All rights reserved.</span>
+        <a href="https://twitter.com/bytepackio" target="_blank">
+          <div class="footer__twitter ml-1">
+            <span class="feather-icon icon-twitter"></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

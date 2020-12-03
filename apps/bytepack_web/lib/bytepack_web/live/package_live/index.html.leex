@@ -1,0 +1,48 @@
+<div class="page-title-box">
+  <div class="row">
+    <div class="col-6">
+      <h4 class="page-title"><%= @page_title %></h4>
+    </div>
+    <div class="col-6 text-right mt-3">
+      <%= if @packages != [] do %>
+        <%= live_redirect to: Routes.package_new_path(@socket, :new, @current_org), class: "btn btn-sm btn-primary" do %>
+          <i class="feather-icon icon-plus mr-1"></i>Add new package
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= if @packages != [] do %>
+  <div class="row">
+  <%= for package <- @packages do %>
+    <div class="col-md-4">
+      <div class="card package-card ribbon-box">
+        <div class="card-body">
+          <%= live_component(@socket, BytepackWeb.PackageLive.PackageTypeRibbonComponent, type: package.type) %>
+
+          <h4 class="card-title"><%= package.name %></h4>
+          <h6 class="card-subtitle text-muted">v<%= latest_version(package) %></h6>
+
+          <div class="mt-3 mb-4">
+            <%= text_to_html(package.description) %>
+          </div>
+
+          <%= live_redirect to: Routes.package_show_path(@socket, :show, @current_org, package.type, package.name), class: "btn btn-primary" do %>
+            <i class="feather-icon icon-info mr-1"></i>See details
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+<% else %>
+  <%= live_component @socket, BytepackWeb.InfoBannerComponent,
+  title: "You don't have any packages yet.",
+  description: "As soon as you create your first package, you will be able to find relevant information about it here.",
+  icon: "package" do %>
+    <%= live_redirect to: Routes.package_new_path(@socket, :new, @current_org), id: "empty-page-new-package-button", class: "btn btn-sm info-banner__button" do %>
+      <span class="feather-icon icon-plus mr-1"></span>Add new package
+    <% end %>
+  <% end %>
+<% end %>

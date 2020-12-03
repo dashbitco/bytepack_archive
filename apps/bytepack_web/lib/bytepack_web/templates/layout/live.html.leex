@@ -1,0 +1,35 @@
+<%= if Phoenix.LiveView.static_changed?(@socket) do %>
+  <div id="reload-static" class="alert alert-info mt-0 text-center">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          The app has been updated. <a phx-hook="ReloadLink" href="#">Click here to reload</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<main role="main" class="wrapper">
+  <div class="content-page">
+    <div class="content">
+      <%= render("_#{@navbar}_navbar.html", assigns) %>
+
+      <div class="container-fluid">
+        <%= for {key, msg} <- @flash, is_binary(msg) do %>
+          <div class="alert alert-<%= if key == "error", do: "danger", else: "success" %>" role="alert">
+            <%= msg %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                    phx-click="lv:clear-flash" phx-value-key="<%= key %>">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% end %>
+
+        <%= @inner_content %>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%= render BytepackWeb.LayoutView, "_footer.html", conn: @socket %>

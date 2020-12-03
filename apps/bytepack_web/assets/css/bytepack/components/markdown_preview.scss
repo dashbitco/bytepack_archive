@@ -1,0 +1,13 @@
+.markdown-preview {
+  background-color: $gray-200;
+  border-radius: 5px;
+  flex-grow: 1;
+  margin-bottom: 2.35rem;
+  margin-top: 1.8rem;
+  overflow: auto;
+  padding: 0.75rem;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}

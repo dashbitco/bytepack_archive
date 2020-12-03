@@ -1,0 +1,66 @@
+<div class="purchase-page">
+  <div class="purchase-page__header">
+    <div class="purchase-page__header-decorations">
+      <img class="purchase-page__header-decoration-hex" src="<%= Routes.static_path(@socket, "/images/packages/hex_icon.svg") %>" width="100" />
+      <img class="purchase-page__header-decoration-hex2" src="<%= Routes.static_path(@socket, "/images/packages/hex_icon.svg") %>" width="60" />
+      <img class="purchase-page__header-decoration-hex3" src="<%= Routes.static_path(@socket, "/images/packages/hex_icon.svg") %>" width="130" />
+      <img class="purchase-page__header-decoration-hex4" src="<%= Routes.static_path(@socket, "/images/packages/hex_icon.svg") %>" width="130" />
+      <div class="purchase-page__header-decoration-package">
+        <span class="feather-icon icon-package"></span>
+      </div>
+      <div class="purchase-page__header-decoration-package2">
+        <span class="feather-icon icon-package"></span>
+      </div>
+      <div class="purchase-page__header-decoration-package3">
+        <span class="feather-icon icon-package"></span>
+      </div>
+      <div class="purchase-page__header-decoration-package4">
+        <span class="feather-icon icon-package"></span>
+      </div>
+    </div>
+
+    <img class="purchase-page__logo" src="<%= Routes.static_path(@socket, "/images/bytepack_logo_white.png") %>" width="140" alt="Bytepack" />
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center purchase-page__header-text">
+          <p class="purchase-page__header-faded-line">You recently bought</p>
+          <p class="purchase-page__header-package-name"><%= @sale.product.name %></p>
+
+          <%= if @action == :register do %>
+            <p class="purchase-page__header-faded-line">Create an account or login to access it via Bytepack.</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="purchase-page__main">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="card">
+            <div class="card-body pt-0">
+              <%= case @action do %>
+                <% :register -> %>
+                  <%= live_component(@socket, BytepackWeb.Onboarding.PurchaseLive.RegisterComponent,
+                    id: :register_purchase,
+                    current_user: @current_user,
+                    audit_context: @audit_context,
+                    sale: @sale) %>
+
+                <% :assign -> %>
+                  <%= live_component(@socket, BytepackWeb.Onboarding.PurchaseLive.AssignComponent,
+                    id: :assign_purchase,
+                    current_user: @current_user,
+                    audit_context: @audit_context,
+                    orgs: @orgs,
+                    sale: @sale) %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, BytepackWeb.SaleLive.FormComponent,
+    id: {:form, @sale.id || :new},
+    action: @live_action,
+    audit_context: @audit_context,
+    seller: @seller,
+    sale: @sale,
+    return_to: Routes.sale_index_path(@socket, :index, @current_org) %>
+<% end %>
+
+<%= if @live_action in [:revoke] do %>
+  <%= live_modal @socket, BytepackWeb.SaleLive.RevokeComponent,
+    id: {:revoke, @sale.id},
+    action: @live_action,
+    audit_context: @audit_context,
+    seller: @seller,
+    sale: @sale,
+    return_to: Routes.sale_index_path(@socket, :index, @current_org) %>
+<% end %>
+
+<div class="page-title-box">
+  <div class="row">
+    <div class="col-9">
+      <h4 class="page-title"><%= @page_title %></h4>
+    </div>
+
+    <div class="col-3 text-right mt-3">
+      <%= if @sales != [] do %>
+        <%= live_patch to: Routes.sale_index_path(@socket, :new, @current_org), id: "new-sale-button", class: "btn btn-sm btn-primary" do %>
+          <i class="feather-icon icon-plus mr-1"></i>Add
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= if @blank_banner do %>
+  <%= blank_banner(@blank_banner, assigns) %>
+<% else %>
+  <div class="card">
+    <div class="card-body">
+      <div class="sales-table__wrapper">
+        <table id="members" class="table sales-table">
+          <thead class="thead-light sales-table__header">
+            <tr>
+              <th>Date</th>
+              <th>Product</th>
+              <th>Sale e-mail</th>
+              <th>Buyer</th>
+              <th>External ID</th>
+              <th>Status</th>
+              <th class="sales-table__actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+          <%= for sale <- @sales do %>
+            <tr id="sale-<%= sale.id %>">
+              <td class="text-nowrap"><%= Date.to_string(sale.inserted_at) %></td>
+              <td class="sales-table__product-name"><%= sale.product.name %></td>
+              <td><%= sale.email %></td>
+              <td>
+              <%= if sale.buyer do %>
+                <span data-toggle="tooltip" title="<%= sale.buyer.email %>"><%= sale.buyer.name %></span>
+              <% end %>
+              </td>
+              <td><%= sale.external_id %></td>
+              <td>
+                <%= sale_state(sale) %>
+
+                <%= if sale.revoked_at && sale.revoke_reason do %>
+                  <i class="feather-icon icon-info" data-toggle="tooltip"
+                    data-original-title="Reason: <%= sale.revoke_reason %>">
+                <% end %>
+              </td>
+              <td class="sales-table__buttons">
+                <%= live_patch to: Routes.sale_index_path(@socket, :edit, @current_org, sale), class: "btn btn-sm btn-primary" do %>
+                  <i class="feather-icon icon-edit mr-1"></i>Edit
+                <% end %>
+
+                <%= if Sales.can_be_revoked?(sale) do %>
+                  <%= live_patch to: Routes.sale_index_path(@socket, :revoke, @current_org, sale), class: "btn btn-sm btn-warning" do %>
+                    <i class="feather-icon icon-alert-triangle mr-1"></i>Revoke
+                  <% end %>
+                <% end %>
+
+                <%= if Sales.can_be_activated?(sale) do %>
+                  <button type="button" class="btn btn-sm btn-success"
+                    phx-click="activate_sale" phx-value-id="<%= sale.id %>"
+                    data-toggle="tooltip"
+                    data-original-title="This action enables a previously revoked sale, so the buyer may have access to its packages once again"
+                    data-confirm="Are you sure you want to activate this sale?">
+                    <i class="feather-icon icon-alert-triangle mr-1"></i>Reactivate
+                  </button>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>

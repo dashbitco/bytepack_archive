@@ -1,0 +1,84 @@
+<section class="py-5 border-top border-light">
+  <div class="container" id="features">
+
+    <div class="row py-3">
+      <div class="col-lg-12">
+        <div class="text-center">
+          <h1 class="mt-0"><i class="feather-icon icon-user-plus text-muted"></i></h1>
+          <h3>Enriching experiences for you and your customers</h3>
+          <p class="header-subtitle mt-2">
+            We are currently in beta! Here is a peek into our roadmap:
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 my-4">
+        <div class="text-center p-3">
+          <div class="feature-icon m-auto">
+            <span class="feature-icon__circle rounded-circle">
+              <img class="feature-icon__image" src="<%= Routes.static_path(@conn, "/images/landing/icons/feature-licensing.svg") %>" />
+            </span>
+          </div>
+          <h4 class="mt-3 feature__title">Licensing</h4>
+          <p class="mt-2 mb-0 px-2 feature__description">
+            Distribute packages for multiple platforms and control how and which packages your customers get access to.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 my-4">
+        <div class="text-center p-3">
+          <div class="feature-icon m-auto">
+            <span class="feature-icon__circle rounded-circle">
+              <img class="feature-icon__image" src="<%= Routes.static_path(@conn, "/images/landing/icons/access-control.svg") %>" />
+            </span>
+          </div>
+          <h4 class="mt-3 feature__title">Access control</h4>
+          <p class="mt-2 mb-0 px-2 feature__description">
+            Your customers can track exactly how, when, and who is downloading each package they have purchased.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="text-center p-3 my-4">
+          <div class="feature-icon m-auto">
+            <span class="feature-icon__circle rounded-circle">
+              <img class="feature-icon__image" src="<%= Routes.static_path(@conn, "/images/landing/icons/versioning.svg") %>" />
+            </span>
+          </div>
+          <h4 class="mt-3 feature__title">Versioning</h4>
+          <p class="mt-2 mb-0 px-2 feature__description">
+            Notify customers whenever there is a new version. They can review, audit it, and upgrade at their own pace.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="text-center p-3 my-4">
+          <div class="feature-icon m-auto">
+            <span class="feature-icon__circle rounded-circle">
+              <img class="feature-icon__image" src="<%= Routes.static_path(@conn, "/images/landing/icons/integrations.svg") %>" />
+            </span>
+          </div>
+          <h4 class="mt-3 feature__title">Integrations</h4>
+          <p class="mt-2 mb-0 px-2 feature__description">
+            Use our Stripe integration to onboard your first customers directly from your landing page. No webhooks required.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row my-2">
+      <div class="col-sm-12 text-center mt-2">
+        <form action="<%= Routes.contact_form_index_path(@conn, :sell) %>">
+          <button class="btn btn-primary mt-4 mb-2">
+            Get in touch to deliver your products with Bytepack
+            <i class="feather-icon icon-chevron-right ml-1"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

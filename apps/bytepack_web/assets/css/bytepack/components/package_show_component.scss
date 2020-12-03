@@ -1,0 +1,12 @@
+.package-show-component__version-link {
+  cursor: pointer;
+}
+
+.package-show-component__dropdown-menu {
+  left: -12px;
+  top: 18px;
+
+  .dropdown-item {
+    cursor: pointer;
+  }
+}

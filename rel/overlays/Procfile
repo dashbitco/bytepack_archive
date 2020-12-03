@@ -1,0 +1,2 @@
+# https://gigalixir.readthedocs.io/en/latest/database.html#how-to-run-migrations-on-startup
+web: /app/bin/$GIGALIXIR_APP_NAME eval "Bytepack.AppRelease.migrate" && /app/bin/$GIGALIXIR_APP_NAME $GIGALIXIR_COMMAND

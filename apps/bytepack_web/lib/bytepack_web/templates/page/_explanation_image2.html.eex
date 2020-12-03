@@ -1,0 +1,110 @@
+
+  <svg id="explanation-step2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 887.87284 569.68008">
+    <defs>
+      <filter id="explanation-image2__filter-border">
+        <feDropShadow dx="1" dy="1" stdDeviation="1" flood-color="white" />
+        <feDropShadow dx="-1" dy="-1" stdDeviation="1" flood-color="white"/>
+        <feDropShadow dx="1" dy="-1" stdDeviation="1" flood-color="white"/>
+        <feDropShadow dx="-1" dy="1" stdDeviation="1" flood-color="white" />
+        <feDropShadow dx="4" dy="4" stdDeviation="5" flood-color="gray" flood-opacity="0.6" />
+      </filter>
+      <filter id="explanation-image2__filter-border-bigger">
+        <feDropShadow dx="2" dy="2" stdDeviation="0" flood-color="white" />
+        <feDropShadow dx="-2" dy="-2" stdDeviation="0" flood-color="white"/>
+        <feDropShadow dx="2" dy="-2" stdDeviation="0" flood-color="white"/>
+        <feDropShadow dx="-2" dy="2" stdDeviation="0" flood-color="white" />
+        <feDropShadow dx="4" dy="4" stdDeviation="5" flood-color="gray" flood-opacity="0.5" />
+      </filter>
+    </defs>
+
+    <g transform="translate(-130 80)">
+      <rect x="276.41138" y="0.34664" width="611.46146" height="391.60712" fill="#e6e6e6"/>
+      <rect x="293.89598" y="49.46394" width="576.49225" height="319.32231" fill="#2f2e41"/>
+      <rect x="276.1503" width="611.46146" height="25.97712" fill="#a8a4e4"/>
+      <circle cx="295.45441" cy="13.28088" r="4.81466" fill="#fff"/>
+      <circle cx="313.72965" cy="13.28088" r="4.81466" fill="#fff"/>
+      <circle cx="332.00489" cy="13.28088" r="4.81466" fill="#fff"/>
+
+      <g class="explanation-image2__group-npm">
+        <text class="explanation-image2__console-text-npm" x="330" y="100" fill="#fff" style="font: bold 22px sans-serif">
+          <tspan>n</tspan><tspan>p</tspan><tspan>m</tspan>
+          <tspan> </tspan>
+          <tspan>i</tspan><tspan>n</tspan><tspan>s</tspan><tspan>t</tspan><tspan>a</tspan><tspan>l</tspan><tspan>l</tspan>
+        </text>
+        <text x="330" y="140" class="explanation-image2__console-text-npm-finished" width="300" fill="#aaa" style="font: bold 22px sans-serif">
+          <tspan>
+            <tspan x="330">+ bytepack-package@5.11.0</tspan>
+          </tspan>
+          <tspan>
+            <tspan x="330" y="180">added 1 package from 1 contributors and</tspan>
+            <tspan x="330" y="220">audited 1 package in 1.2s</tspan>
+          </tspan>
+        </text>
+      </g>
+
+      <g class="explanation-image2__group-hex">
+        <text class="explanation-image2__console-text-hex" x="330" y="100" fill="#fff" style="font: bold 22px sans-serif">
+          <tspan>m</tspan><tspan>i</tspan><tspan>x</tspan>
+          <tspan> </tspan>
+          <tspan>d</tspan><tspan>e</tspan><tspan>p</tspan><tspan>s</tspan><tspan>.</tspan><tspan>g</tspan><tspan>e</tspan><tspan>t</tspan>
+        </text>
+        <text x="330" y="140" class="explanation-image2__console-text-hex-finished" width="300" fill="#aaa" style="font: bold 22px sans-serif">
+          <tspan>
+            <tspan x="330">New:</tspan>
+            <tspan x="330" y="180">&nbsp;&nbsp;bytepack-package v5.2.4</tspan>
+          </tspan>
+          <tspan>
+            <tspan x="330" y="220">* Getting bytepack-package...</tspan>
+          </tspan>
+        </text>
+      </g>
+
+      <g class="explanation-image2__group-bundler">
+        <text class="explanation-image2__console-text-bundler" x="330" y="100" fill="#fff" style="font: bold 22px sans-serif">
+          <tspan>b</tspan><tspan>u</tspan><tspan>n</tspan><tspan>d</tspan><tspan>l</tspan><tspan>e</tspan>
+          <tspan> </tspan>
+          <tspan>i</tspan><tspan>n</tspan><tspan>s</tspan><tspan>t</tspan><tspan>a</tspan><tspan>l</tspan><tspan>l</tspan>
+        </text>
+        <text x="330" y="140" class="explanation-image2__console-text-bundler-finished" width="300" fill="#aaa" style="font: bold 22px sans-serif">
+          <tspan>
+            <tspan x="330">Installing bytepack-package 11.4.2</tspan>
+          </tspan>
+          <tspan>
+            <tspan x="330" y="180">Bundle complete! 1 Gemfile dependency, 1 gem</tspan>
+            <tspan x="330" y="220">now installed.</tspan>
+          </tspan>
+        </text>
+      </g>
+
+    </g>
+
+    <g class="explanation-image2__customer explanation-image2__customer--customer1">
+      <image x="210" y="80" class="explanation-image2__js" style="filter:url(#explanation-image2__filter-border)" href="/images/landing/logos/js.png" width="140" height="140" />
+    </g>
+
+    <g class="explanation-image2__customer explanation-image2__customer--customer2">
+      <image x="595" y="-35" class="explanation-image2__elixir" style="filter:url(#explanation-image2__filter-border)" href="/images/landing/logos/elixir.png" width="220" height="220" />
+    </g>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 847.02014 585.57534" width="530" height="320" x="368" y="230">
+        <ellipse cx="740" cy="520" rx="120" ry="30" fill="#eeeeee" />
+        <polygon points="765.971 223.569 765.971 237.359 775.623 252.527 782.518 224.948 765.971 223.569" fill="#945b63"/>
+        <path d="M941.082,283.05788l7.54033-2.153s11.76454,2.153,11.76454,15.94223,2.75783,68.94594,2.75783,68.94594l-2.75783,31.71514s4.13675,1.37892,2.75783,5.51567S959.008,416.813,957.629,415.43409s-1.37892-4.13675-1.37892-4.13675-22.0627,4.13675-20.68378,0,1.37892-13.78919,2.75784-13.78919-1.37892-41.36757-1.37892-41.36757Z" transform="translate(-176.48993 -182.21233)" fill="#bfbdf1"/>
+        <polygon points="639.8 218.743 657.726 240.806 679.789 267.005 686.683 235.29 674.357 233.355 661.863 214.606 639.8 218.743" fill="#85545c"/>
+
+        <!-- Pants -->
+        <path d="M861.10472,393.37139s-20.68378,11.03135-6.89459,85.493l4.13675,74.46162,2.75784,122.72377H888.6831l5.51567-121.34486,16.547-77.21945,26.19946,68.94594-9.65243,122.72378,37.2308,5.51567L976.9339,536.779l-22.0627-102.04-16.547-28.9573-3.4473-7.584Z" transform="translate(-176.48993 -182.21233)" fill="#4c4a69"/>
+
+        <path d="M865.24148,671.913l-4.13676,12.41026s-5.51567,22.06271,13.78919,19.30487S887.30418,688.46,887.30418,688.46l-1.37892-16.547Z" transform="translate(-176.48993 -182.21233)" fill="#5e5c79"/>
+        <path d="M928.67174,667.77624S924.535,681.56543,924.535,688.46s2.75784,9.8946,2.75784,9.8946,78.59837,5.27351,77.21945-1.62109-9.65243-9.65243-9.65243-9.65243L975.555,682.94435,961.7658,671.913l-27.57838-6.8946Z" transform="translate(-176.48993 -182.21233)" fill="#626083"/>
+        <circle cx="720.46668" cy="40.17313" r="26.19946" fill="#a0616a"/>
+        <polygon points="739.772 51.204 743.908 89.814 734.256 107.74 710.814 81.541 708.056 59.478 739.772 51.204" fill="#a0616a"/>
+        <path d="M907.988,273.40545l-21.627-17.198-4.57249,6.16663-34.473,13.78919,1.37892,60.67243s1.37892,51.02,9.65243,56.53567l-3.44729,4.82622,82.04567,3.44729V364.4141l17.92594-79.9773-31.71513-17.92594-3.947-5.58274Z" transform="translate(-176.48993 -182.21233)" fill="#bfbdf1"/>
+        <path d="M852.83121,278.92113l-2.00848-4.16072-4.88612,1.40288s-9.65243,4.13676-16.547,22.0627-26.19946,57.91459-26.19946,57.91459-5.51568,6.8946-1.37892,13.78919,8.27351,22.0627,8.27351,22.0627-4.13675-1.37892-1.37891,4.13676,2.75783,11.03135,11.03135,9.65243,24.82054-5.51567,23.44162-9.65243-2.75784-11.03135-5.51568-11.03135-6.89459-20.68378-6.89459-20.68378l2.75783-11.03136,20.68379-24.82053Z" transform="translate(-176.48993 -182.21233)" fill="#bfbdf1"/>
+        <path d="M899.71445,203.08059s-4.13676,0-4.13676-1.37892c0,0-14.42328-.4402-20.31137,5.985s-4.50917-3.22719-4.50917-3.22719-15.1681-6.89459-2.75783-13.78919l1.37891,1.37892s2.75784-4.13676,12.41027-5.51567l-1.37892-1.37892s0-1.37892,6.8946-1.37892,24.82054-6.8946,26.19946,8.27351c0,0,11.03135-4.13676,11.03135,9.65243s-1.37892,20.68379-1.37892,20.68379-2.75784-6.8946-8.27351-2.75784S899.71445,203.08059,899.71445,203.08059Z" transform="translate(-176.48993 -182.21233)" fill="#302f47"/>
+    </svg>
+
+    <g class="explanation-image2__customer explanation-image2__customer--customer3">
+      <image x="40" y="460" class="explanation-image2__ruby" style="filter:url(#explanation-image2__filter-border)" href="/images/landing/logos/ruby.png" width="150" height="150" />
+    </g>
+</svg>

@@ -1,0 +1,7 @@
+.purchases__revoked-ribbon {
+  background-color: $gray-500 !important;
+
+  &::before {
+    border-color: $gray-400 transparent transparent !important;
+  }
+}

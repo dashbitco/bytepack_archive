@@ -1,0 +1,16 @@
+.product-box-component {
+  flex-basis: 230px;
+  flex-grow: 1;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.product-box-component__wrapper {
+  margin-bottom: -10px;
+  margin-right: -20px;
+}
+
+.product-box-component__body {
+  border: 1px solid $gray-200;
+}

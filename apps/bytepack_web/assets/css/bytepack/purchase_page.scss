@@ -1,0 +1,121 @@
+.purchase-page__header {
+  position: relative;
+  text-align: center;
+
+  &::after {
+    background: linear-gradient(180deg, #1d223a, #161922);
+    border-radius: 0;
+    bottom: 0;
+    content: ' ';
+    position: absolute;
+    right: 0;
+    top: -505px;
+    transform: skewY(-3deg);
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+.purchase-page__logo {
+  margin-bottom: 60px;
+  margin-top: 70px;
+}
+
+.purchase-page__header-text {
+  color: $gray-100;
+  font-size: 1.7rem;
+  line-height: 42px;
+  margin-bottom: 9rem;
+}
+
+.purchase-page__header-package-name {
+  color: $gray-100;
+}
+
+.purchase-page__header-faded-line {
+  opacity: 0.55;
+}
+
+.purchase-page__main {
+  position: relative;
+  top: -80px;
+}
+
+.purchase-page__form-links {
+  margin-left: -2.4rem;
+  margin-right: -2.4rem;
+  margin-top: -20px;
+  position: relative;
+  top: 80px;
+
+  .purchase-page__form-link-right {
+    text-align: right;
+  }
+}
+
+.purchase-page__section-header {
+  background-color: rgba($primary, 0.15);
+  color: adjust-color($primary, $lightness: -20%, $saturation: -50%);
+  margin: 0 -1.5rem 1.5rem;
+  padding: 0.75rem 1.5rem;
+}
+
+.purchase-page__header-decorations {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.purchase-page__header-decoration-hex {
+  opacity: 0.02;
+  transform: translate(-300px, 60px) rotate(20deg);
+}
+
+.purchase-page__header-decoration-hex2 {
+  opacity: 0.02;
+  transform: translate(450px, 220px) rotate(40deg);
+}
+
+.purchase-page__header-decoration-hex3 {
+  opacity: 0.02;
+  transform: translate(620px, 190px) rotate(-10deg);
+}
+
+.purchase-page__header-decoration-hex4 {
+  opacity: 0.02;
+  transform: translate(-820px, 180px) rotate(-20deg);
+}
+
+.purchase-page__header-decoration-package {
+  color: $gray-100;
+  display: inline-block;
+  font-size: 53px;
+  opacity: 0.03;
+  transform: translate(230px, 20px);
+}
+
+.purchase-page__header-decoration-package2 {
+  color: $gray-100;
+  display: inline-block;
+  font-size: 53px;
+  opacity: 0.03;
+  transform: translate(-580px, 190px) rotate(30deg);
+}
+
+.purchase-page__header-decoration-package3 {
+  color: $gray-100;
+  display: inline-block;
+  font-size: 44px;
+  opacity: 0.03;
+  transform: translate(-780px, 340px) rotate(-10deg);
+}
+
+.purchase-page__header-decoration-package4 {
+  color: $gray-100;
+  display: inline-block;
+  font-size: 44px;
+  opacity: 0.03;
+  transform: translate(460px, 340px) rotate(-10deg);
+}

@@ -1,0 +1,42 @@
+<div class="topnav-navbar topnav-navbar-dark" id="topnav" phx-update="ignore">
+  <div class="container-fluid">
+    <a class="navbar-toggle collapsed" data-toggle="collapse" data-target="#adminnav" aria-expanded="false" aria-controls="orgnav" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="lines">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </a>
+
+    <%= live_redirect to: Routes.dashboard_index_path(@socket, :index), class: "topnav-logo" do %>
+      <img src="<%= Routes.static_path(@socket, "/images/bytepack_logo_white.png") %>" alt="Bytepack" height="40" />
+    <% end %>
+  </div>
+</div>
+
+
+<div class="adminnav">
+  <div class="container-fluid active">
+    <nav class="navbar navbar-dark navbar-expand-lg">
+      <div class="collapse navbar-collapse" id="adminnav" phx-update="ignore">
+        <ul class="navbar-nav">
+          <%= if @current_user.is_staff do %>
+            <li class="nav-item">
+              <%= live_redirect to: Routes.admin_seller_index_path(@socket, :index), class: "nav-link" do %>
+                <i class="feather-icon icon-users"></i>
+                Sellers
+              <% end %>
+            </li>
+
+            <li class="nav-item">
+              <%= live_redirect to: Routes.live_dashboard_path(@socket, :home), class: "nav-link" do %>
+                <i class="feather-icon icon-bar-chart-2"></i>
+                Dashboard
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>

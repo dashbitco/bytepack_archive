@@ -1,0 +1,46 @@
+<div class="page-title-box">
+  <h4 class="page-title">Settings</h4>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="mb-3">Change e-mail</h4>
+        <p>Submit your new e-mail address and your current password to change your address. You will receive an e-mail in your new address to confirm the change.</p>
+        <%= live_component @socket, BytepackWeb.UserSettingsLive.ChangeEmailComponent,
+          id: :change_email,
+          current_user: @current_user,
+          audit_context: @audit_context
+        %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="mb-3">Change password</h4>
+        <%= live_component @socket, BytepackWeb.UserSettingsLive.ChangePasswordComponent,
+          id: :change_password,
+          current_user: @current_user,
+          audit_context: @audit_context
+        %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card ribbon-box">
+      <div class="card-body">
+        <%= live_component @socket, BytepackWeb.UserSettingsLive.TOTPComponent,
+          id: :totp,
+          current_user: @current_user,
+          audit_context: @audit_context
+        %>
+      </div>
+    </div>
+  </div>
+</div>

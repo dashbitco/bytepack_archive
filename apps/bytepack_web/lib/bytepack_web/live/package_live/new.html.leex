@@ -1,0 +1,26 @@
+<div class="page-title-box">
+  <h4 class="page-title"><%= @page_title %></h4>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <p>At the moment, Bytepack supports only Elixir packages. Publishing a package on Bytepack is similar to publishing a package on <a href="https://hex.pm/" target="_blank">Hex.pm</a> and it can be done in two steps.</p>
+
+    <h5>Step 1: configuration</h5>
+
+    <p>First you need to specify the <code>api_url</code> in your project's <code>mix.exs</code> file, as shown below:
+
+    <%= hex_step1_snippet(assigns) %>
+
+    <p>Remember your users will see your <code>mix.exs</code>, so don't put any private information in there besides the API URL above!</p>
+
+    <h5>Step 2: publishing</h5>
+
+    <p>Whenever you are ready to publish your package (or a new version), run the following command:</p>
+
+    <%= hex_step2_snippet(assigns) %>
+
+    <p>Once you publish the package, this page will automatically update.</p>
+  </div>
+</div>
+

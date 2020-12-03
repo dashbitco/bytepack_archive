@@ -1,0 +1,31 @@
+<%= if @error_message do %>
+  <div class="alert alert-danger mt-0 mb-4">
+    <div><%= @error_message %></div>
+  </div>
+<% end %>
+
+<div class="text-center">
+  <h4>Log in</h4>
+  <p class="mb-4">Enter your email and password to access Bytepack's dashboard.</p>
+</div>
+
+<%= form_for @conn, Routes.user_session_path(@conn, :create), [as: :user], fn f -> %>
+  <div class="pt-2">
+    <%= input f, :email, required: true, placeholder: "Enter your email" %>
+    <%= input f, :password, required: true, placeholder: "Enter your password" %>
+    <%= input f, :remember_me, using: :checkbox, label: "Keep me logged in for 60 days" %>
+  </div>
+
+  <div class="text-center pt-2">
+    <%= submit "Log in" %>
+  </div>
+<% end %>
+
+<div class="row auth-links">
+  <div class="col-md-6 auth-link-left">
+    <%= link "Register new account", to: Routes.user_registration_path(@conn, :new) %>
+  </div>
+  <div class="col-md-6 auth-link-right">
+    <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
+  </div>
+</div>

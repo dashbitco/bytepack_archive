@@ -1,0 +1,18 @@
+.info-banner__description {
+  font-weight: 100;
+  opacity: 0.75;
+}
+
+.info-banner {
+  background-color: adjust-color($primary, $lightness: -30%, $saturation: -70%);
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+.info-banner__button {
+  background-color: $gray-300;
+
+  &:hover {
+    background-color: $gray-400;
+  }
+}

@@ -1,0 +1,377 @@
+// Base style adjustments
+
+#landing-page {
+  flex-grow: 1;
+  font-size: 1.1rem;
+
+  .btn,
+  .btn-sm {
+    font-size: inherit;
+  }
+
+  .btn {
+    padding-bottom: 0.55rem;
+    padding-top: 0.6rem;
+  }
+
+  .navbar {
+    .navbar-nav {
+      .nav-link {
+        font-size: inherit;
+        padding-top: 1.25rem;
+      }
+    }
+  }
+
+  .navbar .navbar-nav .nav-link {
+    font-size: inherit;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  .landing-navbar-toggler {
+    padding-top: 0.4rem;
+  }
+
+  .header-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+// Navigation
+
+.navigation-section__logo {
+  height: 40px;
+}
+
+.navigation-section__rounded-button-dashboard,
+.navigation-section__rounded-button-sign-in {
+  padding-bottom: 0.25rem !important;
+  padding-top: 0.3rem !important;
+  position: relative;
+  right: 20%;
+}
+
+.navigation-section__rounded-button-sign-in {
+  right: 40%;
+}
+
+.navigation-section--with-background {
+  background: linear-gradient(-75deg, $bytepack-bg 0%, $bytepack-bg-light 140%);
+}
+
+@include media-breakpoint-down(md) {
+  .navigation-section {
+    margin: 10px 10px 0;
+  }
+
+  .navigation-section--with-background {
+    margin: 0;
+    padding-bottom: 12px;
+
+    .landing-navbar-toggler {
+      margin-top: 12px;
+    }
+  }
+
+  .navigation-section__logo {
+    margin-left: 5px;
+    margin-top: 10px;
+  }
+
+  .hero-section__wrapper {
+    padding: 0 5px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  #landing-page {
+    .navbar .navbar-nav .nav-item:first-of-type .nav-link {
+      padding-left: 1.3rem;
+    }
+  }
+}
+
+// Hero section
+
+.hero-section {
+  padding: 80px 0 120px;
+  position: relative;
+
+  &::after {
+    background: linear-gradient(to bottom, $bytepack-bg-light, $bytepack-bg);
+    border-radius: 0;
+    bottom: 0;
+    content: ' ';
+    position: absolute;
+    right: 0;
+    top: -500px;
+    transform: skewY(-2deg);
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+.hero-section__title {
+  margin-bottom: 1.2rem;
+}
+
+@include media-breakpoint-down(md) {
+  .hero-section__title {
+    font-size: 1.4rem;
+  }
+}
+
+// Explanation section
+
+.explanation-section__image-wrapper-step1 {
+  svg {
+    margin-right: 40px;
+    max-height: 290px;
+  }
+}
+
+.explanation-section__image-wrapper-step2 {
+  text-align: left;
+
+  svg {
+    max-height: 290px;
+    position: relative;
+    top: -15px;
+  }
+}
+
+.explanation-section__title {
+  font-size: 1.25rem;
+}
+
+.explanation-section__description {
+  color: $gray-700;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.hero-image-bytepack-logo {
+  opacity: 0.35;
+}
+
+.explanation-image1__programmer {
+  transform-origin: bottom right;
+}
+
+.explanation-image1__bytepack-window {
+  transform-origin: top center;
+}
+
+.explanation-image1__bytepack-logo {
+  opacity: 0;
+}
+
+.explanation-image1__js {
+  opacity: 0;
+  transform: scale(0, 0);
+}
+
+.explanation-image2__customer {
+  opacity: 0;
+  transform-origin: center center;
+}
+
+.explanation-image2__console-text-npm tspan {
+  opacity: 0;
+}
+
+@include media-breakpoint-up(lg) {
+  .explanation-section {
+    max-width: 950px;
+  }
+}
+
+// Features
+
+.feature-icon {
+  height: 72px;
+  width: 72px;
+}
+
+.feature-icon__circle {
+  align-items: center;
+  background-color: #d5dcfc;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.feature-icon__image {
+  height: 32px;
+  width: 32px;
+}
+
+.feature__title {
+  font-size: 1.25rem;
+}
+
+.feature__description {
+  color: $gray-700;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+// Header description
+
+.header-subtitle {
+  color: #525f66;
+}
+
+// Landing modal
+
+.landing-modal__close {
+  font-size: 2rem;
+  left: 1.75rem;
+  margin: -1.25rem 0 -1.25rem auto !important;
+  padding: 1.25rem !important;
+  position: relative;
+  top: 0.55rem;
+}
+
+// Contact form
+
+.contact-category-button__arrow {
+  transition: all 0.2s ease-out;
+}
+
+.contact-category-button__header {
+  align-items: center;
+  border: 1px solid $white;
+  cursor: pointer;
+  transition: all 0.1s ease-out;
+
+  &:hover {
+    box-shadow: $card-box-shadow;
+
+    .contact-category-button__arrow {
+      transform: translateX(5px);
+    }
+  }
+}
+
+.contact-category-button--selected {
+  .contact-category-button__header {
+    background: linear-gradient($white 70%, $gray-100 120%);
+    border-bottom: 1px solid $gray-200;
+
+    &:hover {
+      box-shadow: none;
+
+      .contact-category-button__arrow {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  .contact-category-button__arrow {
+    transform: rotate(90deg);
+  }
+}
+
+.contact-category-button__icon {
+  align-items: center;
+  border-radius: 50%;
+  color: adjust-color($primary, $lightness: -20%, $saturation: -50%);
+  display: flex;
+  height: 2.5rem;
+  justify-content: center;
+  margin-right: 1.25rem;
+  width: 2.5rem;
+}
+
+.contact-form {
+  label {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+}
+
+.contact-form__button {
+  font-size: 1rem !important;
+}
+
+.contact-message-sent__icon {
+  animation-duration: 0.6s;
+  animation-name: show-icon;
+  animation-timing-function: ease-out;
+  display: inline-block;
+}
+
+@keyframes show-icon {
+  0% {
+    transform: translate(-120px, 90px) scale(0);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+// Why Bytepack?
+
+.why-bytepack__paragraph {
+  color: $gray-700;
+  font-size: 1.25rem;
+  line-height: 1.6;
+
+  strong {
+    color: $gray-800;
+  }
+}
+
+.why-bytepack__icon {
+  margin-bottom: 4px;
+  opacity: 0.5;
+  width: 34px;
+}
+
+.why-bytepack__image-bytepack-tile {
+  &,
+  image {
+    opacity: 0;
+    transform-origin: center center;
+
+  }
+}
+
+.why-bytepack__image {
+  svg {
+    width: 310px;
+  }
+}
+
+.why-bytepack__description-row {
+  margin-top: 2rem;
+}
+
+@include media-breakpoint-down(lg) {
+  .why-bytepack__image {
+    svg {
+      left: -10px;
+      position: relative;
+      top: 50px;
+      width: 280px;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .why-bytepack__description-row {
+    margin-top: 0;
+  }
+
+  .why-bytepack__image {
+    display: none;
+  }
+}

@@ -1,0 +1,47 @@
+<section class="py-5">
+  <div class="container explanation-section" id="how-it-works">
+
+    <div class="row py-4">
+      <div class="col-lg-12">
+        <div class="text-center">
+          <h1 class="mt-0"><i class="feather-icon icon-help-circle text-muted"></i></h1>
+          <h3>How it works</h3>
+          <p class="header-subtitle mt-2">Package and deliver your software products in two steps:</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-2 mt-lg-4 py-2 pt-lg-4">
+      <div class="col-lg-5 explanation-section__image-wrapper-step1 order-1 order-lg-0">
+        <%= render "_explanation_image1.html", conn: @conn %>
+      </div>
+      <div class="col-md col-lg-7 pb-4 pb-lg-0">
+        <h4 class="explanation-section__title mt-3">Step 1</h4>
+        <p class="explanation-section__description">
+          You develop a product and deploy it to Bytepack as a package via your standard tooling (Elixir's Hex, Node's npm, Ruby's Rubygems, Docker Images, etc.).
+        </p>
+      </div>
+    </div>
+
+    <div class="row mt-2 py-lg-4">
+      <div class="col-lg-6 pb-4 pb-lg-0">
+        <h4 class="explanation-section__title mt-3">Step 2</h4>
+        <p class="explanation-section__description">
+          Developers and enterprises buy a license for your product and install it using the same standard tooling - that you both know and love.
+        </p>
+      </div>
+      <div class="col-lg-5 offset-lg-1 explanation-section__image-wrapper-step2">
+        <%= render "_explanation_image2.html", conn: @conn %>
+      </div>
+    </div>
+
+    <div class="row mt-4 mt-lg-1 mb-2 mt-lg-4">
+      <div class="col-sm-12 text-center">
+        <div class="font-20">Have you already acquired products on Bytepack?</div>
+        <form action="<%= Routes.user_session_path(@conn, :new) %>">
+          <button class="btn btn-primary mt-4 mb-2">Access my packages<i class="feather-icon icon-chevron-right ml-1"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

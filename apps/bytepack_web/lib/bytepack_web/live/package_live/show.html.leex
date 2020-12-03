@@ -1,0 +1,30 @@
+<%= if @live_action == :edit do %>
+  <%= live_modal @socket, BytepackWeb.PackageLive.FormComponent,
+    id: {:form, @package.id},
+    action: @live_action,
+    audit_context: @audit_context,
+    package: @package,
+    return_to: Routes.package_show_path(@socket, :show, @current_org, @package.type, @package.name) %>
+<% end %>
+
+<div class="page-title-box">
+  <div class="row">
+    <div class="col-6">
+      <h4 class="page-title">Package details</h4>
+    </div>
+    <div class="col-6 text-right mt-3">
+      <%= live_redirect to: Routes.package_show_path(@socket, :edit, @current_org, @package.type, @package.name), class: "btn btn-sm btn-primary" do %>
+        <i class="feather-icon icon-edit mr-1"></i>Edit
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= live_component(@socket, BytepackWeb.PackageLive.ShowComponent,
+  id: {:package, @package.id},
+  selected_release: @selected_release,
+  current_membership: @current_membership,
+  current_org: @current_org,
+  package: @package,
+  type: :test)
+%>

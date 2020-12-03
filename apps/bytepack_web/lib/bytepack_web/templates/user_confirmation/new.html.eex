@@ -1,0 +1,21 @@
+<div class="text-center">
+  <h4>Resend confirmation instructions</h4>
+  <p class="mb-4">Enter your email to receive confirmation instructions again.</p>
+</div>
+
+<%= form_for :user, Routes.user_confirmation_path(@conn, :create), fn f -> %>
+  <%= input f, :email, required: true %>
+
+  <div class="text-center pt-2">
+    <%= submit "Resend confirmation instructions" %>
+  </div>
+<% end %>
+
+<div class="row auth-links">
+  <div class="col-md-6 auth-link-left">
+    <%= link "Register new account", to: Routes.user_registration_path(@conn, :new) %>
+  </div>
+  <div class="col-md-6 auth-link-right">
+    <%= link "Log in", to: Routes.user_session_path(@conn, :new) %>
+  </div>
+</div>

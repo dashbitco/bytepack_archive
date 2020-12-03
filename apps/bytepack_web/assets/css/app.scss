@@ -1,0 +1,86 @@
+/* This file is for your main application css. */
+
+
+@import './bytepack/variables';
+@import './node_modules/bootstrap/scss/functions';
+@import './node_modules/bootstrap/scss/variables';
+@import './node_modules/bootstrap/scss/bootstrap';
+
+@import './bytepack/landing_page';
+@import './bytepack/purchase_page';
+@import './bytepack/components/dashboard';
+@import './bytepack/components/package_type_ribbon';
+@import './bytepack/components/package_show_component';
+@import './bytepack/components/product_packages';
+@import './bytepack/components/product_box_component';
+@import './bytepack/components/package_badge';
+@import './bytepack/components/info_banner';
+@import './bytepack/components/admin';
+@import './bytepack/components/sales_table';
+@import './bytepack/components/purchases';
+@import './bytepack/components/markdown_preview';
+
+.alert {
+  margin: 1.3em 0 0;
+}
+
+/* LiveView specific classes for your customizations */
+.phx-click-loading {
+  opacity: 0.5;
+  transition: opacity 1s ease-out;
+}
+
+.phx-disconnected {
+  cursor: wait;
+}
+
+.phx-disconnected * {
+  pointer-events: none;
+}
+
+.live-modal {
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  left: 0;
+  opacity: 1 !important;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.live-modal .modal-title {
+  margin-top: 0;
+}
+
+.live-modal .close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.form-submit {
+  padding: 0.75rem 0 0.375rem;
+}
+
+.phx-no-feedback .invalid-feedback {
+  display: none;
+}
+
+.phx-no-feedback label {
+  color: inherit !important;
+}
+
+.phx-no-feedback input,
+.phx-no-feedback textarea,
+.phx-no-feedback label::before {
+  background-image: none !important;
+  border-color: $gray-300 !important;
+  padding-right: 0 !important;
+}
+
+.cursor-default {
+  cursor: default;
+}

@@ -1,0 +1,50 @@
+<div class="page-title-box">
+  <div class="row">
+    <div class="col-8">
+      <h4 class="page-title"><%= @page_title %></h4>
+    </div>
+    <div class="col-4 text-right mt-3">
+      <%= if @products != [] do %>
+        <%= live_redirect to: Routes.product_new_path(@socket, :new, @current_org), class: "btn btn-sm btn-primary" do %>
+          <i class="feather-icon icon-plus mr-1"></i>Add new product
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= if @blank_banner do %>
+  <%= blank_banner(@blank_banner, assigns) %>
+<% else %>
+  <div class="row">
+  <%= for product <- @products do %>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><%= product.name %></h4>
+
+          <h6 class="card-subtitle text-muted mb-2">ID: <%= product.id %></h6>
+
+          <%= text_to_html(product.description) %>
+
+          <h5 class="mt-3">Packages</h5>
+
+          <div class="comma-separated-list">
+            <%= for package <- product.packages do %>
+              <%= live_redirect to: Routes.package_show_path(@socket, :show, @current_org, package.type, package.name), class: "badge badge-secondary package-badge mr-1" do %>
+                <%= PackageHelpers.package_icon(@socket, package.type) %> <%= package.name %>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="d-block">
+            <%= live_redirect to: Routes.product_edit_path(@socket, :edit, @current_org, product), class: "btn btn-sm btn-primary mt-3" do %>
+              <i class="feather-icon icon-edit mr-1"></i>Edit
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+<% end %>

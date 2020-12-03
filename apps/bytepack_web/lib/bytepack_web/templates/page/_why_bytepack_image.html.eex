@@ -1,0 +1,48 @@
+<div class="why-bytepack__image">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 630">
+    <path id="a" fill="#2F2E40" d="M232.95 526V421.6H77.35V526h155.6z"/>
+    <path id="c" fill="#FFF" d="M436 39.2q0-5.6-4.05-9.6-4-4-9.65-4l-354.2.9q-5.7 0-9.65 4t-3.95 9.75l1.35 529.45q0 5.6 4.05 9.6 4 3.95 9.65 3.95l354.2-.85q5.6 0 9.6-4.05 4-4 4-9.65L436 39.2z"/>
+    <path id="e" fill="#FAFAFA" d="M422.1 47.15q-4.25-4.2-10.25-4.15l-333.25.85q-6 0-10.25 4.25T64.1 58.35l.4 160.3 362.25-1.15-.4-160.1q0-6-4.25-10.25z"/>
+    <path id="f" fill="#FAFAFA" d="M253.85 748.6q4.25 4.25 10.25 4.15l333.3-.8q6 0 10.25-4.25t4.25-10.25l-1.1-466-362.3 2.2 1.1 464.7q0 6 4.25 10.25z"/>
+    <path id="g" fill="#E0E0E0" d="M419.6 311.3h-344v113h344v-113M418 168.05v-113H74v113h344z"/>
+    <path id="h" fill="#E0E0E0" d="M74.15 440.8v113h344v-113h-344z"/>
+    <path id="j" fill="#CCC" d="M157.45 477.8q-9.8-9.9-23.7-9.9-13.9 0-23.7 9.9-9.8 9.85-9.8 23.85 0 13.95 9.8 23.85 9.85 9.85 23.7 9.85 13.9 0 23.7-9.85 9.8-9.9 9.8-23.85 0-14-9.8-23.85z"/>
+    <path id="k" fill="#CCC" d="M200 509.15v14.2h177.55v-14.2H200z"/>
+    <path id="l" fill="#CCC" d="M385.55 223.5v-14.2H208v14.2h177.55z"/>
+    <path id="m" fill="#CCC" d="M200 509.15v14.2h177.55v-14.2H200z"/>
+    <path id="n" fill="#CCC" d="M200 509.15v14.2h177.55v-14.2H200z"/>
+    <path id="o" fill="#CCC" d="M200 509.15v14.2h177.55v-14.2H200z"/>
+    <path id="p" fill="#CCC" d="M200 509.15v14.2h177.55v-14.2H200z"/>
+    <path id="q" fill="#CCC" d="M200 509.15v14.2h177.55v-14.2H200z"/>
+    <path id="r" fill="#CCC" d="M200 509.15v14.2h177.55v-14.2H200z"/>
+    <path id="b" fill="none" stroke="#EBEBEB" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-width="4" d="M77.35 421.6h155.6V526H77.35V421.6z"/>
+    <path id="d" fill="none" stroke="#EBEBEB" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-width="4" d="M68.1 26.5l354.2-.9q5.65 0 9.65 4 4.05 4 4.05 9.6l1.35 529.5q0 5.65-4 9.65-4 4.05-9.6 4.05l-354.2.85q-5.65 0-9.65-3.95-4.05-4-4.05-9.6L54.5 40.25q0-5.75 3.95-9.75t9.65-4z"/>
+    <g>
+      <use xlink:href="#a"/>
+      <use xlink:href="#b"/>
+    </g>
+    <g>
+      <use xlink:href="#c"/>
+      <use xlink:href="#d"/>
+    </g>
+    <use xlink:href="#e"/>
+    <use transform="matrix(1 0 0 .80408 -184 -39.65)" xlink:href="#f"/>
+    <use xlink:href="#g"/>
+    <use transform="translate(0 -254)" xlink:href="#h"/>
+    <use transform="translate(5 -259)" xlink:href="#j"/>
+    <use transform="translate(8 -274)" xlink:href="#k"/>
+    <use xlink:href="#l"/>
+    <path id="i" fill="#E0E0E0" transform="translate(0 -132)" d="M74.15 572.85v113h344v-113h-344z"/>
+    <use transform="translate(8 -246.15)" xlink:href="#m"/>
+    <use transform="matrix(1.75793 0 0 2.97887 -260.5 -1058.45)" xlink:href="#n"/>
+    <use transform="matrix(1.75793 0 0 1.1328 -260.5 -62.1)" xlink:href="#o"/>
+    <use transform="matrix(1.75793 0 0 1.1328 -261.65 -443.9)" xlink:href="#p"/>
+    <use transform="matrix(1.75793 0 0 1.1328 -261.65 -471.1)" xlink:href="#q"/>
+    <use transform="matrix(1.75793 0 0 1.1328 -261.65 -501.1)" xlink:href="#r"/>
+
+    <g class="why-bytepack__image-bytepack-tile">
+      <path id="s" transform="translate(-8 -40)" fill="#2F2E40" d="M469.85 429.65V262.8H37.45v166.85h432.4z"/>
+      <image x="125" y="265" href="/images/bytepack_logo_white.png" width="232" height="80" />
+    </g>
+  </svg>
+</div>

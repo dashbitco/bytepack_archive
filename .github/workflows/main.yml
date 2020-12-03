@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+env:
+  otp-version: 23.0.2
+  elixir-version: 1.10.3
+  node-version: 12.16.2
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Install OTP and Elixir
+        uses: actions/setup-elixir@v1
+        with:
+          otp-version: ${{ env.otp-version }}
+          elixir-version: ${{ env.elixir-version }}
+
+      - name: Cache mix deps
+        uses: actions/cache@v2
+        env:
+          cache-name: mix-deps
+        with:
+          path: deps
+          key: ${{ runner.os }}-${{ env.otp-version }}-${{ env.elixir-version }}-${{ env.cache-name }}-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: npm-deps
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ env.node-version }}-${{ hashFiles(format('{0}{1}', github.workspace, '/apps/bytepack_web/assets/package-lock.json')) }}
+
+      - run: mix deps.get
+      - run: mix deps.unlock --check-unused
+      - run: mix format --check-formatted
+
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.node-version }}
+
+      - run: npm ci
+        working-directory: ./apps/bytepack_web/assets
+      - run: npm run lint.js
+        working-directory: ./apps/bytepack_web/assets
+      - run: npm run lint.css
+        working-directory: ./apps/bytepack_web/assets
+
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:11
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Install OTP and Elixir
+        uses: actions/setup-elixir@v1
+        with:
+          otp-version: ${{ env.otp-version }}
+          elixir-version: ${{ env.elixir-version }}
+
+      - name: Cache mix deps
+        uses: actions/cache@v2
+        env:
+          cache-name: mix-deps
+        with:
+          path: deps
+          key: ${{ runner.os }}-${{ env.otp-version }}-${{ env.elixir-version }}-${{ env.cache-name }}-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+
+      - run: mix deps.get
+      - run: MIX_ENV=test mix deps.compile --skip-umbrella-children
+      - run: MIX_ENV=test mix do compile, test

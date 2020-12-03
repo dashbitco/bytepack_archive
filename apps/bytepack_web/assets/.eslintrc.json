@@ -1,0 +1,15 @@
+{
+  "env": {
+     "browser": true,
+     "es2020": true
+  },
+  "parser": "babel-eslint",
+  "extends": [
+    "standard"
+  ],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+  }
+}

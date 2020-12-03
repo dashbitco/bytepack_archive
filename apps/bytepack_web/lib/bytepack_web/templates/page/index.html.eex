@@ -1,0 +1,5 @@
+<%= render "_hero.html", conn: @conn %>
+<%= render "_explanation.html", conn: @conn %>
+<%= render "_why_bytepack.html", conn: @conn %>
+<%= render "_features.html", conn: @conn %>
+<%= render "_notices.html" %>

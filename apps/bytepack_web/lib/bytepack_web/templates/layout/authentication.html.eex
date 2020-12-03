@@ -1,0 +1,30 @@
+<main role="main" class="simple-page">
+  <div class="row no-gutters justify-content-center">
+    <div class="col-md-6 col-xl-4">
+      <div class="card simple-page-card">
+        <div class="card-header simple-page-header text-center">
+          <%= link to: Routes.page_path(@conn, :index), class: "p-4 w-100 d-inline-block" do %>
+            <img src="<%= Routes.static_path(@conn, "/images/bytepack_logo_white.png") %>" alt="Bytepack" height="40" />
+          <% end %>
+        </div>
+        <div class="card-body p-4">
+          <%= if get_flash(@conn, :info) do %>
+            <div class="alert alert-success mb-4 mt-0" role="alert">
+              <%= get_flash(@conn, :info) %>
+            </div>
+          <% end %>
+
+          <%= if get_flash(@conn, :error) do %>
+            <div class="alert alert-danger mb-4 mt-0" role="alert">
+              <%= get_flash(@conn, :error) %>
+            </div>
+          <% end %>
+
+          <%= @inner_content %>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%= render BytepackWeb.LayoutView, "_footer.html", conn: @conn %>

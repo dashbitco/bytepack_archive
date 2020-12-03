@@ -1,0 +1,59 @@
+<%= render_layout BytepackWeb.LayoutView, "root.html", assigns do %>
+  <div id="landing-page">
+    <nav class="navbar navbar-expand-lg py-md-3 navbar-dark navigation-section<%= if !assigns[:homepage] do %> navigation-section--with-background<% end %>">
+      <div class="container">
+        <!-- logo -->
+        <a href="/" class="navbar-brand mr-lg-3 mr-xl-5">
+          <img class="navigation-section__logo logo-dark" src="<%= Routes.static_path(@conn, "/images/bytepack_logo_white.png") %>" alt="Bytepack" />
+        </a>
+    
+        <button class="landing-navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="feather-icon icon-menu"></i>
+        </button>
+    
+        <!-- menus -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    
+          <!-- left menu -->
+          <ul class="landing__menu navbar-nav mr-auto align-items-center">
+            <li class="nav-item mx-md-1">
+              <%= if assigns[:homepage] do %>
+                <a class="nav-link" href="#how-it-works" data-click-scroll="true">How it works</a>
+              <% else %>
+                <%= link "How it works", to: "#{Routes.page_path(@conn, :index)}#how-it-works", class: "nav-link" %>
+              <% end %>
+            </li>
+            <li class="nav-item mx-md-1">
+              <%= if assigns[:homepage] do %>
+                <a class="nav-link" href="#why-bytepack" data-click-scroll="true">Why Bytepack?</a>
+              <% else %>
+                <%= link "Why Bytepack?", to: "#{Routes.page_path(@conn, :index)}#why-bytepack", class: "nav-link" %>
+              <% end %>
+            </li>
+            <li class="nav-item mx-md-1">
+              <%= link "Contact", to: Routes.contact_form_index_path(@conn, :index), class: "nav-link" %>
+            </li>
+          </ul>
+    
+          <!-- right menu -->
+          <ul class="navbar-nav ml-auto align-items-center">
+            <li class="nav-item mr-0">
+              <%= if @current_user do %>
+                <%= link("Go to dashboard", to: Routes.dashboard_index_path(@conn, :index), class: "nav-link d-lg-none") %>
+                <%= link("Go to dashboard", to: Routes.dashboard_index_path(@conn, :index), class: "btn btn-sm btn-light btn-rounded d-none d-lg-inline-flex navigation-section__rounded-button-dashboard") %>
+              <% else %>
+                <%= link("Log in", to: Routes.user_session_path(@conn, :new), class: "nav-link d-lg-none") %>
+                <%= link("Log in", to: Routes.user_session_path(@conn, :new), class: "btn btn-sm btn-light btn-rounded d-none d-lg-inline-flex navigation-section__rounded-button-sign-in") %>
+              <% end %>
+            </li>
+          </ul>
+    
+        </div>
+      </div>
+    </nav> 
+    <%= @inner_content %>
+  </div>
+
+  <%= render BytepackWeb.LayoutView, "_footer.html", conn: @conn %>
+<% end %>

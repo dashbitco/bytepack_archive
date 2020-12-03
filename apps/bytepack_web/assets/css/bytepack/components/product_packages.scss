@@ -1,0 +1,26 @@
+.product-packages__menu-icon {
+  align-items: center;
+  background-color: adjust-color($primary, $lightness: +7%);
+  border-radius: 50%;
+  display: flex;
+  height: 1.5rem;
+  justify-content: center;
+  margin-top: 2px;
+  width: 1.5rem;
+
+  img {
+    margin-left: 0;
+    margin-top: -1px;
+    width: 14px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .product-packages__description {
+    padding-right: 20px;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
